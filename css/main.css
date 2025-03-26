@@ -1,0 +1,102 @@
+body{
+    font-size: 16px;
+    font-family: "PT Sans Caption", sans-serif;;
+}
+
+.main{
+    min-height: 100vh;
+    background-color: #faf1f4;
+}
+
+.main-title{
+    font-family: "Pacifico", cursive;
+    line-height: 3.75rem;
+    font-size: 3.125rem;
+    color: #504e52;
+}
+
+.bookmark-body{
+    border-width: 2px 0;
+    border-color: #504e52;
+    border-style: dotted;
+}
+
+.bookmark-body-title h2{
+    font-family: "Righteous", cursive;
+    background: linear-gradient(to right, #fb6f92, #ff8fab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bookmark-body-title i ,
+.bookmark-body-title h2
+{
+    font-size: 1.5625rem;
+    line-height: 1.5625rem;
+}
+
+.bookmark-body-title i:first-child {
+    color: #fb6f92; 
+}
+
+.bookmark-body-title i:last-child {
+    color: #ff8fab; 
+}
+
+.bookmark-body .form-control:focus{
+    border-color: #ff8fab;
+    box-shadow: 0 0 0 0.25rem #ffb3c655;
+    color: #504e52;
+}
+
+.bookmark-body label , 
+.bookmark-body input{
+    color: #504e52;
+}
+
+.btn{
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: #fff;
+    padding: .375rem .75rem;
+}
+
+.btn-submit{
+    --bs-btn-bg:#ae2012;
+    --bs-btn-border-color: #ae2012;
+    --bs-btn-hover-bg: #cc2516;
+    --bs-btn-hover-border-color: #cc2516;
+}
+
+.table-container th ,
+.table-container td{
+    color: #474549;
+}
+
+.btn-visit{
+    --bs-btn-bg:#9f86c0;
+    --bs-btn-border-color: #9f86c0;
+    --bs-btn-hover-bg: #b699db;
+    --bs-btn-hover-border-color: #b699db;
+}
+
+.btn-delete{
+    background-color: transparent;
+    border: none;
+    color: #ae2012;
+    transition: all 0.4s;
+}
+
+.btn-delete i{
+    font-size: 1.6875rem;
+}
+
+.btn-delete:hover{
+    color: #cc2516;
+}
+
+.btn-update{
+    --bs-btn-bg: #aa9488; 
+    --bs-btn-border-color: #aa9488;
+    --bs-btn-hover-bg: #bba496; 
+    --bs-btn-hover-border-color: #bba496;
+}

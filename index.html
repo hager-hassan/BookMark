@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMark</title>
+
+    <!-- *google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+    
+    <!-- *font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- *style sheets -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <main class="main py-5 w-100">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <h1 class="main-title fw-medium text-center py-2 mb-2 position-relative">Bookmarker</h1>
+            <div class="bookmark-body mt-5 px-3 py-5 d-flex flex-column justify-content-center align-items-center gap-4 w-100">
+                <div class="bookmark-body-title">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <h2 class="fw-medium d-inline">
+                        Bookmark your favorite sites
+                    </h2>
+                    <i class="fa-solid fa-bookmark"></i>
+                </div>
+    
+                <div class="w-100">
+                    <label for="siteName" class="fw-semibold pb-2">
+                        <i class="fa-solid fa-book-bookmark pe-2"></i>Site Name
+                    </label>
+                    <input type="text" class="form-control" id="siteName" placeholder="Bookmark Name">
+                </div>
+    
+                <div class="w-100">
+                    <label for="siteURL" class="fw-semibold pb-2">
+                        <i class="fa-solid fa-link pe-2"></i>Site URL
+                    </label>
+                    <input type="url" class="form-control" id="siteURL" placeholder="Website URL">
+                </div>
+    
+                <button type="submit" class="btn px-5 btn-submit" onclick="add()" id="btn-add">Submit</button>
+                <button type="submit" class="btn px-5 btn-update d-none" onclick="update()" id="btn-update">Update</button>
+            </div>
+    
+            <div class="table-container mt-4 mb-3 w-100">
+                <table class="table text-center bg-light w-100">
+                    <thead>
+                        <tr>
+                            <th class="text-capitalize">number</th>
+                            <th class="text-capitalize">website name</th>
+                            <th class="text-capitalize">visit</th>
+                            <th class="text-capitalize">update</th>
+                            <th class="text-capitalize">delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableContent"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- *for sweetAlter2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- *my JS file -->
+    <script src="js/main.js"></script>
+</body>
+</html>
