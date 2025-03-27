@@ -100,3 +100,7 @@ body{
     --bs-btn-hover-bg: #bba496; 
     --bs-btn-hover-border-color: #bba496;
 }
+
+.rules-container i{
+    color: #fb6f92;
+}

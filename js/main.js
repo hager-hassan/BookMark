@@ -5,6 +5,17 @@ let siteURL = document.getElementById('siteURL');
 
 bookmarkList = [];
 
+const URLRegex = /^(https?:\/\/)?(www\.)?[\w-]+\.[a-z]{2,}(\S*)?$/;
+const nameRegex = /^[a-zA-Z][\w\s!@#$%^&*()-]{1,22}[a-zA-Z0-9]$/;
+;
+
+// const rules = 'wrong';
+
+const rules = {
+    siteName: "Bookmark name must be 2-25 characters and start/end with a letter or number!",
+    siteURL: "Please enter a valid URL!",
+};
+
 // use it fe function el update
 let currentIndex;
 
@@ -76,12 +87,20 @@ function add(){
     }
 
     if(isEmpty()){
-        emptyInputsAlter();
+        showAlter('Fields cannot be empty!');
+        return;
+    }
+
+    if(!validation(siteName , nameRegex)){
+        return;
+    }
+
+    if(!validation(siteURL , URLRegex)){
         return;
     }
 
     if(!isUnique()){
-        notUniqueAlter();
+        showAlter('Bookmark name should be unique!');
         return;
     }
 
@@ -97,7 +116,7 @@ function add(){
     // display el bookmarks
     display();
 
-    addMessage();
+    showToastMessage('Bookmark added successfully!');
 }
 
 // ! to delete bookmark
@@ -132,12 +151,16 @@ function update(){
     }
 
     if(isEmpty()){
-        emptyInputsAlter();
+        showAlter('Fields cannot be empty!');
         return;
     }
 
-    if(!isUnique(currentIndex)){
-        notUniqueAlter();
+    if(!validation(siteName , nameRegex) || !validation(siteURL , URLRegex)){
+        return;
+    }
+
+    if(!isUnique()){
+        showAlter('Bookmark name should be unique!');
         return;
     }
 
@@ -155,7 +178,7 @@ function update(){
     document.getElementById('btn-update').classList.add("d-none");
     document.getElementById('btn-add').classList.remove("d-none");
 
-    updateMessage();
+    showToastMessage('Bookmark updated successfully!');
 }
 
 // ! to go to the link
@@ -167,11 +190,11 @@ function visit(index){
 
 // !------------------------ functions for alters ---------------------! 
 
-//  ? alter for empty inputs
-function emptyInputsAlter(){
+// ? display alter
+function showAlter(text){
     Swal.fire({
         title: 'Error!',
-        text: 'Fields cannot be empty!',
+        html: text,
         icon: 'error',
         iconColor: '#fb6f92',
         confirmButtonColor: "#fb6f92",
@@ -179,40 +202,31 @@ function emptyInputsAlter(){
     });
 }
 
-//  ? alter for empty inputs
-function notUniqueAlter(){
-    Swal.fire({
-        title: 'Error!',
-        text: 'Bookmark name should be unique!',
-        icon: 'error',
-        iconColor: '#fb6f92',
-        confirmButtonColor: "#fb6f92",
-        color: '#504e52',
-    });
-}
-
-// ? show message when add bookmark
-function addMessage(){
+// ? show toast message
+function showToastMessage(title){
     Swal.fire({
         toast: true,
         icon: 'success',
         iconColor: '#9f86c0',
-        title: 'Bookmark added successfully!',
+        title: title,
         width: '25%',
         showConfirmButton: false,
         timer: 2000, 
     });
 }
 
-// ? show message when update bookmark
-function updateMessage(){
-    Swal.fire({
-        toast: true,
-        icon: 'success',
-        iconColor: '#9f86c0',
-        title: 'Bookmark updated successfully!',
-        width: '26%',
-        showConfirmButton: false,
-        timer: 2000, 
-    });
+// !------------------------ function for validation ---------------------! 
+
+// ? check el validation for each input
+function validation(input , regex) {
+    if (!regex.test(input.value)) {
+        showAlter(`
+            <div class="rules-container text-start">
+                <p><i class="fa-regular fa-circle-right"></i> Bookmark name must be 3-25 characters and start with a letter and end with a letter or number!</p>
+                <p><i class="fa-regular fa-circle-right"></i> Bookmark URL must be a valid one!</p>
+            </div>
+        `);
+        return false;
+    }
+    return true;
 }
