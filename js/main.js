@@ -5,16 +5,9 @@ let siteURL = document.getElementById('siteURL');
 
 bookmarkList = [];
 
-const URLRegex = /^(https?:\/\/)?(www\.)?[\w-]+\.[a-z]{2,}(\S*)?$/;
+const URLRegex = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
 const nameRegex = /^[a-zA-Z][\w\s!@#$%^&*()-]{1,22}[a-zA-Z0-9]$/;
-;
 
-// const rules = 'wrong';
-
-const rules = {
-    siteName: "Bookmark name must be 2-25 characters and start/end with a letter or number!",
-    siteURL: "Please enter a valid URL!",
-};
 
 // use it fe function el update
 let currentIndex;
@@ -155,11 +148,15 @@ function update(){
         return;
     }
 
-    if(!validation(siteName , nameRegex) || !validation(siteURL , URLRegex)){
+    if(!validation(siteName , nameRegex)){
         return;
     }
 
-    if(!isUnique()){
+    if(!validation(siteURL , URLRegex)){
+        return;
+    }
+
+    if(!isUnique(currentIndex)){
         showAlter('Bookmark name should be unique!');
         return;
     }
@@ -207,6 +204,7 @@ function showToastMessage(title){
     Swal.fire({
         toast: true,
         icon: 'success',
+        position: 'top-end',
         iconColor: '#9f86c0',
         title: title,
         width: '25%',
@@ -228,5 +226,7 @@ function validation(input , regex) {
         `);
         return false;
     }
-    return true;
+    else{
+        return true;
+    }
 }

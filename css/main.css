@@ -3,6 +3,11 @@ body{
     font-family: "PT Sans Caption", sans-serif;;
 }
 
+::selection{
+    color: white;
+    background-color: #fb6f92;
+}
+
 .main{
     min-height: 100vh;
     background-color: #faf1f4;
