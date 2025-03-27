@@ -207,7 +207,7 @@ function showToastMessage(title){
         position: 'top-end',
         iconColor: '#9f86c0',
         title: title,
-        width: '25%',
+        width: '26%',
         showConfirmButton: false,
         timer: 2000, 
     });
